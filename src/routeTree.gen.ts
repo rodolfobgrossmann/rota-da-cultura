@@ -10,33 +10,201 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as CadastroRouteImport } from './routes/cadastro'
+import { Route as ArtistasIndexRouteImport } from './routes/artistas.index'
+import { Route as ArtistasIdRouteImport } from './routes/artistas.$id'
+import { Route as EventosIdRouteImport } from './routes/eventos.$id'
+import { Route as LocaisIndexRouteImport } from './routes/locais.index'
+import { Route as LocaisIdRouteImport } from './routes/locais.$id'
+import { Route as AuthenticatedAgendaIndexRouteImport } from './routes/_authenticated/agenda.index'
+import { Route as AuthenticatedAgendaArtistasRouteImport } from './routes/_authenticated/agenda.artistas'
+import { Route as AuthenticatedAgendaLocaisRouteImport } from './routes/_authenticated/agenda.locais'
+import { Route as AuthenticatedAgendaPresencasRouteImport } from './routes/_authenticated/agenda.presencas'
+import { Route as AuthenticatedOrganizarIndexRouteImport } from './routes/_authenticated/organizar.index'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CadastroRoute = CadastroRouteImport.update({
+  id: '/cadastro',
+  path: '/cadastro',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArtistasIndexRoute = ArtistasIndexRouteImport.update({
+  id: '/artistas/',
+  path: '/artistas/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArtistasIdRoute = ArtistasIdRouteImport.update({
+  id: '/artistas/$id',
+  path: '/artistas/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EventosIdRoute = EventosIdRouteImport.update({
+  id: '/eventos/$id',
+  path: '/eventos/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LocaisIndexRoute = LocaisIndexRouteImport.update({
+  id: '/locais/',
+  path: '/locais/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LocaisIdRoute = LocaisIdRouteImport.update({
+  id: '/locais/$id',
+  path: '/locais/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedAgendaIndexRoute =
+  AuthenticatedAgendaIndexRouteImport.update({
+    id: '/agenda/',
+    path: '/agenda/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedAgendaArtistasRoute =
+  AuthenticatedAgendaArtistasRouteImport.update({
+    id: '/agenda/artistas',
+    path: '/agenda/artistas',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedAgendaLocaisRoute =
+  AuthenticatedAgendaLocaisRouteImport.update({
+    id: '/agenda/locais',
+    path: '/agenda/locais',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedAgendaPresencasRoute =
+  AuthenticatedAgendaPresencasRouteImport.update({
+    id: '/agenda/presencas',
+    path: '/agenda/presencas',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedOrganizarIndexRoute =
+  AuthenticatedOrganizarIndexRouteImport.update({
+    id: '/organizar/',
+    path: '/organizar/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/cadastro': typeof CadastroRoute
+  '/artistas/$id': typeof ArtistasIdRoute
+  '/eventos/$id': typeof EventosIdRoute
+  '/locais/$id': typeof LocaisIdRoute
+  '/artistas/': typeof ArtistasIndexRoute
+  '/locais/': typeof LocaisIndexRoute
+  '/agenda/artistas': typeof AuthenticatedAgendaArtistasRoute
+  '/agenda/locais': typeof AuthenticatedAgendaLocaisRoute
+  '/agenda/presencas': typeof AuthenticatedAgendaPresencasRoute
+  '/agenda/': typeof AuthenticatedAgendaIndexRoute
+  '/organizar/': typeof AuthenticatedOrganizarIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/cadastro': typeof CadastroRoute
+  '/artistas/$id': typeof ArtistasIdRoute
+  '/eventos/$id': typeof EventosIdRoute
+  '/locais/$id': typeof LocaisIdRoute
+  '/artistas': typeof ArtistasIndexRoute
+  '/locais': typeof LocaisIndexRoute
+  '/agenda/artistas': typeof AuthenticatedAgendaArtistasRoute
+  '/agenda/locais': typeof AuthenticatedAgendaLocaisRoute
+  '/agenda/presencas': typeof AuthenticatedAgendaPresencasRoute
+  '/agenda': typeof AuthenticatedAgendaIndexRoute
+  '/organizar': typeof AuthenticatedOrganizarIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
+  '/auth': typeof AuthRoute
+  '/cadastro': typeof CadastroRoute
+  '/artistas/$id': typeof ArtistasIdRoute
+  '/eventos/$id': typeof EventosIdRoute
+  '/locais/$id': typeof LocaisIdRoute
+  '/artistas/': typeof ArtistasIndexRoute
+  '/locais/': typeof LocaisIndexRoute
+  '/_authenticated/agenda/artistas': typeof AuthenticatedAgendaArtistasRoute
+  '/_authenticated/agenda/locais': typeof AuthenticatedAgendaLocaisRoute
+  '/_authenticated/agenda/presencas': typeof AuthenticatedAgendaPresencasRoute
+  '/_authenticated/agenda/': typeof AuthenticatedAgendaIndexRoute
+  '/_authenticated/organizar/': typeof AuthenticatedOrganizarIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/cadastro'
+    | '/artistas/$id'
+    | '/eventos/$id'
+    | '/locais/$id'
+    | '/artistas/'
+    | '/locais/'
+    | '/agenda/artistas'
+    | '/agenda/locais'
+    | '/agenda/presencas'
+    | '/agenda/'
+    | '/organizar/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/auth'
+    | '/cadastro'
+    | '/artistas/$id'
+    | '/eventos/$id'
+    | '/locais/$id'
+    | '/artistas'
+    | '/locais'
+    | '/agenda/artistas'
+    | '/agenda/locais'
+    | '/agenda/presencas'
+    | '/agenda'
+    | '/organizar'
+  id:
+    | '__root__'
+    | '/'
+    | '/_authenticated'
+    | '/auth'
+    | '/cadastro'
+    | '/artistas/$id'
+    | '/eventos/$id'
+    | '/locais/$id'
+    | '/artistas/'
+    | '/locais/'
+    | '/_authenticated/agenda/artistas'
+    | '/_authenticated/agenda/locais'
+    | '/_authenticated/agenda/presencas'
+    | '/_authenticated/agenda/'
+    | '/_authenticated/organizar/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
+  AuthRoute: typeof AuthRoute
+  CadastroRoute: typeof CadastroRoute
+  ArtistasIdRoute: typeof ArtistasIdRoute
+  EventosIdRoute: typeof EventosIdRoute
+  LocaisIdRoute: typeof LocaisIdRoute
+  ArtistasIndexRoute: typeof ArtistasIndexRoute
+  LocaisIndexRoute: typeof LocaisIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +216,129 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cadastro': {
+      id: '/cadastro'
+      path: '/cadastro'
+      fullPath: '/cadastro'
+      preLoaderRoute: typeof CadastroRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/artistas/': {
+      id: '/artistas/'
+      path: '/artistas'
+      fullPath: '/artistas/'
+      preLoaderRoute: typeof ArtistasIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/artistas/$id': {
+      id: '/artistas/$id'
+      path: '/artistas/$id'
+      fullPath: '/artistas/$id'
+      preLoaderRoute: typeof ArtistasIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/eventos/$id': {
+      id: '/eventos/$id'
+      path: '/eventos/$id'
+      fullPath: '/eventos/$id'
+      preLoaderRoute: typeof EventosIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/locais/': {
+      id: '/locais/'
+      path: '/locais'
+      fullPath: '/locais/'
+      preLoaderRoute: typeof LocaisIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/locais/$id': {
+      id: '/locais/$id'
+      path: '/locais/$id'
+      fullPath: '/locais/$id'
+      preLoaderRoute: typeof LocaisIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/agenda/': {
+      id: '/_authenticated/agenda/'
+      path: '/agenda'
+      fullPath: '/agenda/'
+      preLoaderRoute: typeof AuthenticatedAgendaIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/agenda/artistas': {
+      id: '/_authenticated/agenda/artistas'
+      path: '/agenda/artistas'
+      fullPath: '/agenda/artistas'
+      preLoaderRoute: typeof AuthenticatedAgendaArtistasRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/agenda/locais': {
+      id: '/_authenticated/agenda/locais'
+      path: '/agenda/locais'
+      fullPath: '/agenda/locais'
+      preLoaderRoute: typeof AuthenticatedAgendaLocaisRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/agenda/presencas': {
+      id: '/_authenticated/agenda/presencas'
+      path: '/agenda/presencas'
+      fullPath: '/agenda/presencas'
+      preLoaderRoute: typeof AuthenticatedAgendaPresencasRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/organizar/': {
+      id: '/_authenticated/organizar/'
+      path: '/organizar'
+      fullPath: '/organizar/'
+      preLoaderRoute: typeof AuthenticatedOrganizarIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
   }
 }
 
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedAgendaArtistasRoute: typeof AuthenticatedAgendaArtistasRoute
+  AuthenticatedAgendaLocaisRoute: typeof AuthenticatedAgendaLocaisRoute
+  AuthenticatedAgendaPresencasRoute: typeof AuthenticatedAgendaPresencasRoute
+  AuthenticatedAgendaIndexRoute: typeof AuthenticatedAgendaIndexRoute
+  AuthenticatedOrganizarIndexRoute: typeof AuthenticatedOrganizarIndexRoute
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedAgendaArtistasRoute: AuthenticatedAgendaArtistasRoute,
+  AuthenticatedAgendaLocaisRoute: AuthenticatedAgendaLocaisRoute,
+  AuthenticatedAgendaPresencasRoute: AuthenticatedAgendaPresencasRoute,
+  AuthenticatedAgendaIndexRoute: AuthenticatedAgendaIndexRoute,
+  AuthenticatedOrganizarIndexRoute: AuthenticatedOrganizarIndexRoute,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
+  AuthRoute: AuthRoute,
+  CadastroRoute: CadastroRoute,
+  ArtistasIdRoute: ArtistasIdRoute,
+  EventosIdRoute: EventosIdRoute,
+  LocaisIdRoute: LocaisIdRoute,
+  ArtistasIndexRoute: ArtistasIndexRoute,
+  LocaisIndexRoute: LocaisIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
