@@ -23,6 +23,12 @@ import { Route as AuthenticatedAgendaArtistasRouteImport } from './routes/_authe
 import { Route as AuthenticatedAgendaLocaisRouteImport } from './routes/_authenticated/agenda.locais'
 import { Route as AuthenticatedAgendaPresencasRouteImport } from './routes/_authenticated/agenda.presencas'
 import { Route as AuthenticatedOrganizarIndexRouteImport } from './routes/_authenticated/organizar.index'
+import { Route as AuthenticatedOrganizarArtistasIdRouteImport } from './routes/_authenticated/organizar.artistas.$id'
+import { Route as AuthenticatedOrganizarArtistasNovoRouteImport } from './routes/_authenticated/organizar.artistas.novo'
+import { Route as AuthenticatedOrganizarEventosIdRouteImport } from './routes/_authenticated/organizar.eventos.$id'
+import { Route as AuthenticatedOrganizarEventosNovoRouteImport } from './routes/_authenticated/organizar.eventos.novo'
+import { Route as AuthenticatedOrganizarLocaisIdRouteImport } from './routes/_authenticated/organizar.locais.$id'
+import { Route as AuthenticatedOrganizarLocaisNovoRouteImport } from './routes/_authenticated/organizar.locais.novo'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -98,6 +104,42 @@ const AuthenticatedOrganizarIndexRoute =
     path: '/organizar/',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
+const AuthenticatedOrganizarArtistasIdRoute =
+  AuthenticatedOrganizarArtistasIdRouteImport.update({
+    id: '/organizar/artistas/$id',
+    path: '/organizar/artistas/$id',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedOrganizarArtistasNovoRoute =
+  AuthenticatedOrganizarArtistasNovoRouteImport.update({
+    id: '/organizar/artistas/novo',
+    path: '/organizar/artistas/novo',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedOrganizarEventosIdRoute =
+  AuthenticatedOrganizarEventosIdRouteImport.update({
+    id: '/organizar/eventos/$id',
+    path: '/organizar/eventos/$id',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedOrganizarEventosNovoRoute =
+  AuthenticatedOrganizarEventosNovoRouteImport.update({
+    id: '/organizar/eventos/novo',
+    path: '/organizar/eventos/novo',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedOrganizarLocaisIdRoute =
+  AuthenticatedOrganizarLocaisIdRouteImport.update({
+    id: '/organizar/locais/$id',
+    path: '/organizar/locais/$id',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedOrganizarLocaisNovoRoute =
+  AuthenticatedOrganizarLocaisNovoRouteImport.update({
+    id: '/organizar/locais/novo',
+    path: '/organizar/locais/novo',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -113,6 +155,12 @@ export interface FileRoutesByFullPath {
   '/agenda/presencas': typeof AuthenticatedAgendaPresencasRoute
   '/agenda/': typeof AuthenticatedAgendaIndexRoute
   '/organizar/': typeof AuthenticatedOrganizarIndexRoute
+  '/organizar/artistas/$id': typeof AuthenticatedOrganizarArtistasIdRoute
+  '/organizar/artistas/novo': typeof AuthenticatedOrganizarArtistasNovoRoute
+  '/organizar/eventos/$id': typeof AuthenticatedOrganizarEventosIdRoute
+  '/organizar/eventos/novo': typeof AuthenticatedOrganizarEventosNovoRoute
+  '/organizar/locais/$id': typeof AuthenticatedOrganizarLocaisIdRoute
+  '/organizar/locais/novo': typeof AuthenticatedOrganizarLocaisNovoRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -128,6 +176,12 @@ export interface FileRoutesByTo {
   '/agenda/presencas': typeof AuthenticatedAgendaPresencasRoute
   '/agenda': typeof AuthenticatedAgendaIndexRoute
   '/organizar': typeof AuthenticatedOrganizarIndexRoute
+  '/organizar/artistas/$id': typeof AuthenticatedOrganizarArtistasIdRoute
+  '/organizar/artistas/novo': typeof AuthenticatedOrganizarArtistasNovoRoute
+  '/organizar/eventos/$id': typeof AuthenticatedOrganizarEventosIdRoute
+  '/organizar/eventos/novo': typeof AuthenticatedOrganizarEventosNovoRoute
+  '/organizar/locais/$id': typeof AuthenticatedOrganizarLocaisIdRoute
+  '/organizar/locais/novo': typeof AuthenticatedOrganizarLocaisNovoRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -145,6 +199,12 @@ export interface FileRoutesById {
   '/_authenticated/agenda/presencas': typeof AuthenticatedAgendaPresencasRoute
   '/_authenticated/agenda/': typeof AuthenticatedAgendaIndexRoute
   '/_authenticated/organizar/': typeof AuthenticatedOrganizarIndexRoute
+  '/_authenticated/organizar/artistas/$id': typeof AuthenticatedOrganizarArtistasIdRoute
+  '/_authenticated/organizar/artistas/novo': typeof AuthenticatedOrganizarArtistasNovoRoute
+  '/_authenticated/organizar/eventos/$id': typeof AuthenticatedOrganizarEventosIdRoute
+  '/_authenticated/organizar/eventos/novo': typeof AuthenticatedOrganizarEventosNovoRoute
+  '/_authenticated/organizar/locais/$id': typeof AuthenticatedOrganizarLocaisIdRoute
+  '/_authenticated/organizar/locais/novo': typeof AuthenticatedOrganizarLocaisNovoRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -162,6 +222,12 @@ export interface FileRouteTypes {
     | '/agenda/presencas'
     | '/agenda/'
     | '/organizar/'
+    | '/organizar/artistas/$id'
+    | '/organizar/artistas/novo'
+    | '/organizar/eventos/$id'
+    | '/organizar/eventos/novo'
+    | '/organizar/locais/$id'
+    | '/organizar/locais/novo'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -177,6 +243,12 @@ export interface FileRouteTypes {
     | '/agenda/presencas'
     | '/agenda'
     | '/organizar'
+    | '/organizar/artistas/$id'
+    | '/organizar/artistas/novo'
+    | '/organizar/eventos/$id'
+    | '/organizar/eventos/novo'
+    | '/organizar/locais/$id'
+    | '/organizar/locais/novo'
   id:
     | '__root__'
     | '/'
@@ -193,6 +265,12 @@ export interface FileRouteTypes {
     | '/_authenticated/agenda/presencas'
     | '/_authenticated/agenda/'
     | '/_authenticated/organizar/'
+    | '/_authenticated/organizar/artistas/$id'
+    | '/_authenticated/organizar/artistas/novo'
+    | '/_authenticated/organizar/eventos/$id'
+    | '/_authenticated/organizar/eventos/novo'
+    | '/_authenticated/organizar/locais/$id'
+    | '/_authenticated/organizar/locais/novo'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -307,6 +385,48 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedOrganizarIndexRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/organizar/artistas/$id': {
+      id: '/_authenticated/organizar/artistas/$id'
+      path: '/organizar/artistas/$id'
+      fullPath: '/organizar/artistas/$id'
+      preLoaderRoute: typeof AuthenticatedOrganizarArtistasIdRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/organizar/artistas/novo': {
+      id: '/_authenticated/organizar/artistas/novo'
+      path: '/organizar/artistas/novo'
+      fullPath: '/organizar/artistas/novo'
+      preLoaderRoute: typeof AuthenticatedOrganizarArtistasNovoRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/organizar/eventos/$id': {
+      id: '/_authenticated/organizar/eventos/$id'
+      path: '/organizar/eventos/$id'
+      fullPath: '/organizar/eventos/$id'
+      preLoaderRoute: typeof AuthenticatedOrganizarEventosIdRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/organizar/eventos/novo': {
+      id: '/_authenticated/organizar/eventos/novo'
+      path: '/organizar/eventos/novo'
+      fullPath: '/organizar/eventos/novo'
+      preLoaderRoute: typeof AuthenticatedOrganizarEventosNovoRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/organizar/locais/$id': {
+      id: '/_authenticated/organizar/locais/$id'
+      path: '/organizar/locais/$id'
+      fullPath: '/organizar/locais/$id'
+      preLoaderRoute: typeof AuthenticatedOrganizarLocaisIdRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/organizar/locais/novo': {
+      id: '/_authenticated/organizar/locais/novo'
+      path: '/organizar/locais/novo'
+      fullPath: '/organizar/locais/novo'
+      preLoaderRoute: typeof AuthenticatedOrganizarLocaisNovoRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
   }
 }
 
@@ -316,6 +436,12 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedAgendaPresencasRoute: typeof AuthenticatedAgendaPresencasRoute
   AuthenticatedAgendaIndexRoute: typeof AuthenticatedAgendaIndexRoute
   AuthenticatedOrganizarIndexRoute: typeof AuthenticatedOrganizarIndexRoute
+  AuthenticatedOrganizarArtistasIdRoute: typeof AuthenticatedOrganizarArtistasIdRoute
+  AuthenticatedOrganizarArtistasNovoRoute: typeof AuthenticatedOrganizarArtistasNovoRoute
+  AuthenticatedOrganizarEventosIdRoute: typeof AuthenticatedOrganizarEventosIdRoute
+  AuthenticatedOrganizarEventosNovoRoute: typeof AuthenticatedOrganizarEventosNovoRoute
+  AuthenticatedOrganizarLocaisIdRoute: typeof AuthenticatedOrganizarLocaisIdRoute
+  AuthenticatedOrganizarLocaisNovoRoute: typeof AuthenticatedOrganizarLocaisNovoRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
@@ -324,6 +450,14 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedAgendaPresencasRoute: AuthenticatedAgendaPresencasRoute,
   AuthenticatedAgendaIndexRoute: AuthenticatedAgendaIndexRoute,
   AuthenticatedOrganizarIndexRoute: AuthenticatedOrganizarIndexRoute,
+  AuthenticatedOrganizarArtistasIdRoute: AuthenticatedOrganizarArtistasIdRoute,
+  AuthenticatedOrganizarArtistasNovoRoute:
+    AuthenticatedOrganizarArtistasNovoRoute,
+  AuthenticatedOrganizarEventosIdRoute: AuthenticatedOrganizarEventosIdRoute,
+  AuthenticatedOrganizarEventosNovoRoute:
+    AuthenticatedOrganizarEventosNovoRoute,
+  AuthenticatedOrganizarLocaisIdRoute: AuthenticatedOrganizarLocaisIdRoute,
+  AuthenticatedOrganizarLocaisNovoRoute: AuthenticatedOrganizarLocaisNovoRoute,
 }
 
 const AuthenticatedRouteRouteWithChildren =
