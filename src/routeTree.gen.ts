@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as CadastroRouteImport } from './routes/cadastro'
+import { Route as AuthenticatedContaRouteImport } from './routes/_authenticated/conta'
 import { Route as ArtistasIndexRouteImport } from './routes/artistas.index'
 import { Route as ArtistasIdRouteImport } from './routes/artistas.$id'
 import { Route as EventosIdRouteImport } from './routes/eventos.$id'
@@ -48,6 +49,11 @@ const CadastroRoute = CadastroRouteImport.update({
   id: '/cadastro',
   path: '/cadastro',
   getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedContaRoute = AuthenticatedContaRouteImport.update({
+  id: '/conta',
+  path: '/conta',
+  getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 const ArtistasIndexRoute = ArtistasIndexRouteImport.update({
   id: '/artistas/',
@@ -145,6 +151,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/cadastro': typeof CadastroRoute
+  '/conta': typeof AuthenticatedContaRoute
   '/artistas/$id': typeof ArtistasIdRoute
   '/eventos/$id': typeof EventosIdRoute
   '/locais/$id': typeof LocaisIdRoute
@@ -166,6 +173,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/cadastro': typeof CadastroRoute
+  '/conta': typeof AuthenticatedContaRoute
   '/artistas/$id': typeof ArtistasIdRoute
   '/eventos/$id': typeof EventosIdRoute
   '/locais/$id': typeof LocaisIdRoute
@@ -189,6 +197,7 @@ export interface FileRoutesById {
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/auth': typeof AuthRoute
   '/cadastro': typeof CadastroRoute
+  '/_authenticated/conta': typeof AuthenticatedContaRoute
   '/artistas/$id': typeof ArtistasIdRoute
   '/eventos/$id': typeof EventosIdRoute
   '/locais/$id': typeof LocaisIdRoute
@@ -212,6 +221,7 @@ export interface FileRouteTypes {
     | '/'
     | '/auth'
     | '/cadastro'
+    | '/conta'
     | '/artistas/$id'
     | '/eventos/$id'
     | '/locais/$id'
@@ -233,6 +243,7 @@ export interface FileRouteTypes {
     | '/'
     | '/auth'
     | '/cadastro'
+    | '/conta'
     | '/artistas/$id'
     | '/eventos/$id'
     | '/locais/$id'
@@ -255,6 +266,7 @@ export interface FileRouteTypes {
     | '/_authenticated'
     | '/auth'
     | '/cadastro'
+    | '/_authenticated/conta'
     | '/artistas/$id'
     | '/eventos/$id'
     | '/locais/$id'
@@ -314,6 +326,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/cadastro'
       preLoaderRoute: typeof CadastroRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/conta': {
+      id: '/_authenticated/conta'
+      path: '/conta'
+      fullPath: '/conta'
+      preLoaderRoute: typeof AuthenticatedContaRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
     }
     '/artistas/': {
       id: '/artistas/'
@@ -431,6 +450,7 @@ declare module '@tanstack/react-router' {
 }
 
 interface AuthenticatedRouteRouteChildren {
+  AuthenticatedContaRoute: typeof AuthenticatedContaRoute
   AuthenticatedAgendaArtistasRoute: typeof AuthenticatedAgendaArtistasRoute
   AuthenticatedAgendaLocaisRoute: typeof AuthenticatedAgendaLocaisRoute
   AuthenticatedAgendaPresencasRoute: typeof AuthenticatedAgendaPresencasRoute
@@ -445,6 +465,7 @@ interface AuthenticatedRouteRouteChildren {
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedContaRoute: AuthenticatedContaRoute,
   AuthenticatedAgendaArtistasRoute: AuthenticatedAgendaArtistasRoute,
   AuthenticatedAgendaLocaisRoute: AuthenticatedAgendaLocaisRoute,
   AuthenticatedAgendaPresencasRoute: AuthenticatedAgendaPresencasRoute,

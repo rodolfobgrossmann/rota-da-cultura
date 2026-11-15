@@ -50,7 +50,7 @@ export function EventForm({
   userId: string;
   venues: { id: string; name: string }[];
   artists: { id: string; name: string }[];
-  event?: EventItem;
+  event?: EventItem | undefined;
 }) {
   const navigate = useNavigate();
   const queryClient = useQueryClient();

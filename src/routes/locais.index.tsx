@@ -22,7 +22,7 @@ export const Route = createFileRoute("/locais/")({
   component: VenuesPage,
   errorComponent: ({ error }) => (
     <PageContainer>
-      <EmptyState title="Não conseguimos carregar os locais">{error.message}</EmptyState>
+      <EmptyState title="Não conseguimos carregar os locais">{error instanceof Error ? error.message : "Tente novamente em instantes."}</EmptyState>
     </PageContainer>
   ),
 });

@@ -41,7 +41,7 @@ export const Route = createFileRoute("/")({
   component: ExplorePage,
   errorComponent: ({ error }) => (
     <PageContainer>
-      <EmptyState title="Não conseguimos carregar o mapa">{error.message}</EmptyState>
+      <EmptyState title="Não conseguimos carregar o mapa">{error instanceof Error ? error.message : "Tente novamente em instantes."}</EmptyState>
     </PageContainer>
   ),
 });
@@ -73,7 +73,7 @@ function ExplorePage() {
   );
   const selectedVenue = venues.find((v) => v.id === local);
 
-  const setSearch = (patch: { tipo?: string; local?: string }) =>
+  const setSearch = (patch: { tipo?: string | undefined; local?: string | undefined }) =>
     navigate({ search: (prev) => ({ ...prev, ...patch }), replace: true, resetScroll: false });
 
   return (

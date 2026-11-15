@@ -79,7 +79,11 @@ function SignupPage() {
       setErrors({
         form: error.message.toLowerCase().includes("registered")
           ? "Este e-mail já tem cadastro. Entre com sua senha."
-          : "Não foi possível criar sua conta agora. Tente novamente.",
+          : error.message.toLowerCase().includes("not allowed") || error.message.toLowerCase().includes("invalid")
+            ? "Este e-mail não pode receber mensagens. Use um endereço de e-mail real."
+            : error.message.toLowerCase().includes("password")
+              ? "Escolha uma senha mais segura, que não seja fácil de adivinhar."
+              : "Não foi possível criar sua conta agora. Tente novamente.",
       });
       return;
     }

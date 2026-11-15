@@ -31,11 +31,8 @@ export function useToggleRelation(kind: Kind) {
       if (!userId) throw new Error("not-signed-in");
       const { table, column } = TABLE[kind];
       if (active) {
-        const { error } = await supabase
-          .from(table)
-          .delete()
-          .eq("user_id", userId)
-          .eq(column, id);
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const { error } = await (supabase.from(table).delete().eq("user_id", userId) as any).eq(column, id);
         if (error) throw error;
       } else {
         const row = { user_id: userId, [column]: id } as never;

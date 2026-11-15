@@ -35,7 +35,7 @@ export const Route = createFileRoute("/locais/$id")({
   ),
   errorComponent: ({ error }) => (
     <PageContainer>
-      <EmptyState title="Não conseguimos carregar este local">{error.message}</EmptyState>
+      <EmptyState title="Não conseguimos carregar este local">{error instanceof Error ? error.message : "Tente novamente em instantes."}</EmptyState>
     </PageContainer>
   ),
 });

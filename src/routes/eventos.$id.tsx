@@ -37,7 +37,7 @@ export const Route = createFileRoute("/eventos/$id")({
   ),
   errorComponent: ({ error }) => (
     <PageContainer>
-      <EmptyState title="Não conseguimos carregar este evento">{error.message}</EmptyState>
+      <EmptyState title="Não conseguimos carregar este evento">{error instanceof Error ? error.message : "Tente novamente em instantes."}</EmptyState>
     </PageContainer>
   ),
 });

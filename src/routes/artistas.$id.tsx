@@ -34,7 +34,7 @@ export const Route = createFileRoute("/artistas/$id")({
   ),
   errorComponent: ({ error }) => (
     <PageContainer>
-      <EmptyState title="Não conseguimos carregar este perfil">{error.message}</EmptyState>
+      <EmptyState title="Não conseguimos carregar este perfil">{error instanceof Error ? error.message : "Tente novamente em instantes."}</EmptyState>
     </PageContainer>
   ),
 });

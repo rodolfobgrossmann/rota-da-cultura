@@ -34,7 +34,7 @@ export function CultureCard({
   label: string;
   nextEvent: NextEvent;
   following: boolean;
-  pending?: boolean;
+  pending?: boolean | undefined;
   onToggle: () => void;
 }) {
   const linkClass = "w-full";

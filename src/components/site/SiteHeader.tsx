@@ -125,7 +125,7 @@ export function SiteHeader() {
 
         <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger asChild>
-            <Button variant="ghost" size="icon" className="ml-auto lg:hidden" aria-label="Abrir menu">
+            <Button variant="ghost" size="icon" className="ml-auto lg:hidden [&_svg]:size-6" aria-label="Abrir menu">
               <Menu className="size-6" />
             </Button>
           </SheetTrigger>

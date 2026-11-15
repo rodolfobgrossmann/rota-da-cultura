@@ -16,10 +16,10 @@ export function PageHeading({
   subtitle,
   action,
 }: {
-  eyebrow?: ReactNode;
+  eyebrow?: ReactNode | undefined;
   title: ReactNode;
-  subtitle?: ReactNode;
-  action?: ReactNode;
+  subtitle?: ReactNode | undefined;
+  action?: ReactNode | undefined;
 }) {
   return (
     <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between animate-rise">
@@ -43,13 +43,13 @@ export function Poster({
   circle = "corner",
   titleClassName,
 }: {
-  tone?: "olive" | "forest" | "pine";
-  eyebrow?: ReactNode;
+  tone?: "olive" | "forest" | "pine" | undefined;
+  eyebrow?: ReactNode | undefined;
   title: ReactNode;
-  footer?: ReactNode;
-  className?: string;
-  circle?: "corner" | "edge" | "none";
-  titleClassName?: string;
+  footer?: ReactNode | undefined;
+  className?: string | undefined;
+  circle?: "corner" | "edge" | "none" | undefined;
+  titleClassName?: string | undefined;
 }) {
   const toneClass = {
     olive: "bg-olive text-olive-foreground",
@@ -99,8 +99,8 @@ export function EventRow({
   iso: string;
   title: string;
   meta: ReactNode;
-  children?: ReactNode;
-  actions?: ReactNode;
+  children?: ReactNode | undefined;
+  actions?: ReactNode | undefined;
 }) {
   return (
     <div className="flex flex-col gap-4 rounded-2xl bg-card p-5 shadow-soft sm:flex-row sm:items-center sm:gap-6 sm:p-6">
@@ -124,7 +124,7 @@ export function EventRow({
 
 type ArrowLinkProps = {
   children: ReactNode;
-  className?: string;
+  className?: string | undefined;
 } & (
   | { to: "/eventos/$id" | "/artistas/$id" | "/locais/$id"; params: { id: string } }
   | { to: "/" | "/artistas" | "/locais" | "/organizar"; params?: undefined }
@@ -151,11 +151,11 @@ export function Field({
 }: {
   label: string;
   htmlFor: string;
-  required?: boolean;
-  hint?: ReactNode;
-  error?: string;
+  required?: boolean | undefined;
+  hint?: ReactNode | undefined;
+  error?: string | undefined;
   children: ReactNode;
-  className?: string;
+  className?: string | undefined;
 }) {
   return (
     <div className={cn("space-y-2.5", className)}>
@@ -169,7 +169,7 @@ export function Field({
   );
 }
 
-export function InfoPanel({ title, children, tone = "tint", className }: { title: ReactNode; children: ReactNode; tone?: "tint" | "card"; className?: string }) {
+export function InfoPanel({ title, children, tone = "tint", className }: { title: ReactNode; children: ReactNode; tone?: "tint" | "card" | undefined; className?: string }) {
   return (
     <section className={cn("rounded-3xl p-8 md:p-10", tone === "tint" ? "bg-tint" : "bg-card shadow-soft", className)}>
       <h2 className={cn("text-2xl font-bold leading-tight md:text-[1.75rem]", tone === "tint" ? "text-link" : "text-foreground")}>{title}</h2>
@@ -178,7 +178,7 @@ export function InfoPanel({ title, children, tone = "tint", className }: { title
   );
 }
 
-export function EmptyState({ title, children, action }: { title: string; children?: ReactNode; action?: ReactNode }) {
+export function EmptyState({ title, children, action }: { title: string; children?: ReactNode | undefined; action?: ReactNode }) {
   return (
     <div className="rounded-3xl border border-dashed border-border bg-card/60 px-8 py-14 text-center">
       <h3 className="text-2xl font-bold">{title}</h3>

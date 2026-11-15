@@ -28,3 +28,12 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project rules
+
+- Data reads use `queryOptions` in `src/lib/queries.ts` with the browser Cloud client; RLS policies are the security boundary, so every table keeps explicit policies and grants.
+- Signed-in pages live under `src/routes/_authenticated/` (client-only gate that puts `user` in route context); public pages stay top-level and SSR.
+- Organizer-only pages call `requireOrganizer` in their loader; the organizer role lives in `user_roles` and is granted only via the `activate_organizer()` database function.
+- Dates are stored as timestamptz and always rendered/entered in America/Sao_Paulo via `src/lib/format.ts`, so server and browser output match.
+- The map (Leaflet + OpenStreetMap tiles) is lazy-loaded behind `<ClientOnly>`; never import `src/components/map/*` statically from a route.
+- Colors, fonts and decorative shapes (poster circle, pill tags) are tokens/utilities in `src/styles.css`; components use those, not raw colors.

@@ -5,7 +5,7 @@ import type { VenueSummary } from "@/lib/queries";
 
 type Props = {
   venues: (VenueSummary & { eventCount: number })[];
-  selectedId?: string;
+  selectedId?: string | undefined;
   onSelect: (id: string | undefined) => void;
 };
 

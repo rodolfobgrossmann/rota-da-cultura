@@ -26,7 +26,7 @@ export const Route = createFileRoute("/artistas/")({
   component: ArtistsPage,
   errorComponent: ({ error }) => (
     <PageContainer>
-      <EmptyState title="Não conseguimos carregar os artistas">{error.message}</EmptyState>
+      <EmptyState title="Não conseguimos carregar os artistas">{error instanceof Error ? error.message : "Tente novamente em instantes."}</EmptyState>
     </PageContainer>
   ),
 });
